@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="एक मुफ्त ऑनलाइन कैलकुलेटर जोड़, घटाव, गुणा, भाग और प्रतिशत गणना के लिए। Free online calculator for addition, subtraction, multiplication, division and percentage calculations.">
+    <meta name="keywords" content="कैलकुलेटर, ऑनलाइन कैलकुलेटर, हिंदी कैलकुलेटर, गणित उपकरण, calculator, online calculator, hindi calculator, math tool">
+    <meta name="author" content="Hindi Calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/calculator" />
+    <title>हिंदी कैलकुलेटर | जोड़, घटाव, गुणा, भाग और प्रतिशत कैलकुलेटर</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .ad-container {
+            width: 100%;
+            max-width: 728px;
+            margin: 20px auto;
+            text-align: center;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .calculator-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .calculator {
+            width: 100%;
+            max-width: 300px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .display {
+            padding: 20px;
+            text-align: right;
+            background: #2c3e50;
+            color: white;
+            height: 80px;
+        }
+        
+        .previous {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            height: 20px;
+            overflow: hidden;
+        }
+        
+        .current {
+            font-size: 2rem;
+            margin-top: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: #ddd;
+        }
+        
+        button {
+            border: none;
+            padding: 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            background: white;
+            transition: 0.2s;
+        }
+        
+        button:hover {
+            background: #f1f1f1;
+        }
+        
+        .operator {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .operator:hover {
+            background: #e67e22;
+        }
+        
+        .equals {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .equals:hover {
+            background: #2ecc71;
+        }
+        
+        .clear {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .clear:hover {
+            background: #c0392b;
+        }
+        
+        .span-2 {
+            grid-column: span 2;
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .ad-container {
+                max-width: 320px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>हिंदी कैलकुलेटर</h1>
+        <p>जोड़, घटाव, गुणा, भाग और प्रतिशत गणना</p>
+    </header>
+    
+    <div class="ad-container">
+        <!-- AdSense Header Ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="display">
+                <div class="previous" id="previous"></div>
+                <div class="current" id="current">0</div>
+            </div>
+            <div class="buttons">
+                <button class="clear span-2" onclick="clearAll()">AC</button>
+                <button class="clear" onclick="deleteLast()">DEL</button>
+                <button class="operator" onclick="appendOperation('%')">%</button>
+                
+                <button onclick="appendNumber('7')">7</button>
+                <button onclick="appendNumber('8')">8</button>
+                <button onclick="appendNumber('9')">9</button>
+                <button class="operator" onclick="appendOperation('/')">÷</button>
+                
+                <button onclick="appendNumber('4')">4</button>
+                <button onclick="appendNumber('5')">5</button>
+                <button onclick="appendNumber('6')">6</button>
+                <button class="operator" onclick="appendOperation('*')">×</button>
+                
+                <button onclick="appendNumber('1')">1</button>
+                <button onclick="appendNumber('2')">2</button>
+                <button onclick="appendNumber('3')">3</button>
+                <button class="operator" onclick="appendOperation('-')">-</button>
+                
+                <button onclick="appendNumber('0')">0</button>
+                <button onclick="appendNumber('.')">.</button>
+                <button class="equals" onclick="calculate()">=</button>
+                <button class="operator" onclick="appendOperation('+')">+</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="ad-container">
+        <!-- AdSense Footer Ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    <footer>
+        <p>© 2023 हिंदी कैलकुलेटर | सभी अधिकार सुरक्षित</p>
+    </footer>
+
+    <script>
+        let currentDisplay = '0';
+        let previousDisplay = '';
+        let operation = null;
+        let resetScreen = false;
+
+        const currentElement = document.getElementById('current');
+        const previousElement = document.getElementById('previous');
+
+        function appendNumber(number) {
+            if (currentDisplay === '0' || resetScreen) {
+                currentDisplay = '';
+                resetScreen = false;
+            }
+            if (number === '.' && currentDisplay.includes('.')) return;
+            currentDisplay += number;
+            updateDisplay();
+        }
+
+        function appendOperation(op) {
+            if (currentDisplay === '') return;
+            
+            if (op === '%') {
+                currentDisplay = (parseFloat(currentDisplay) / 100).toString();
+                updateDisplay();
+                return;
+            }
+            
+            if (previousDisplay !== '') {
+                calculate();
+            }
+            operation = op;
+            previousDisplay = currentDisplay;
+            currentDisplay = '';
+            updateDisplay();
+        }
+
+        function calculate() {
+            let result;
+            const prev = parseFloat(previousDisplay);
+            const current = parseFloat(currentDisplay);
+            
+            if (isNaN(prev) || isNaN(current)) return;
+            
+            switch (operation) {
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                case '*':
+                    result = prev * current;
+                    break;
+                case '/':
+                    result = prev / current;
+                    break;
+                default:
+                    return;
+            }
+            
+            currentDisplay = result.toString();
+            operation = null;
+            previousDisplay = '';
+            resetScreen = true;
+            updateDisplay();
+        }
+
+        function clearAll() {
+            currentDisplay = '0';
+            previousDisplay = '';
+            operation = null;
+            updateDisplay();
+        }
+
+        function deleteLast() {
+            if (currentDisplay.length === 1) {
+                currentDisplay = '0';
+            } else {
+                currentDisplay = currentDisplay.slice(0, -1);
+            }
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            currentElement.textContent = currentDisplay;
+            previousElement.textContent = previousDisplay + (operation ? ' ' + operation : '');
+        }
+        
+        // Add keyboard support
+        document.addEventListener('keydown', function(event) {
+            if (/[0-9]/.test(event.key)) {
+                appendNumber(event.key);
+            } else if (event.key === '.') {
+                appendNumber('.');
+            } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
+                appendOperation(event.key);
+            } else if (event.key === '%') {
+                appendOperation('%');
+            } else if (event.key === 'Enter' || event.key === '=') {
+                calculate();
+            } else if (event.key === 'Escape') {
+                clearAll();
+            } else if (event.key === 'Backspace') {
+                deleteLast();
+            }
+        });
+    </script>
+    
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "हिंदी कैलकुलेटर",
+      "description": "एक मुफ्त ऑनलाइन कैलकुलेटर जोड़, घटाव, गुणा, भाग और प्रतिशत गणना के लिए",
+      "applicationCategory": "CalculatorApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+</body>
+</html>
