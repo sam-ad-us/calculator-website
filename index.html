@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://yourwebsite.com/calculator" />
     <title>हिंदी कैलकुलेटर | जोड़, घटाव, गुणा, भाग और प्रतिशत कैलकुलेटर</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1247018640760677"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1247018640760677" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -164,7 +164,7 @@
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-1247018640760677"
-             data-ad-slot="6254609048"
+             data-ad-slot="1033253717"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script>
@@ -211,9 +211,9 @@
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-1247018640760677"
-             data-ad-slot="6254609048"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+             data-ad-slot="1033253717"
+             data-ad-format="fluid"
+             data-ad-layout-key="-fb+5w+4e-db+86"></ins>
         <script>
              (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
@@ -251,9 +251,7 @@
                 return;
             }
             
-            if (previousDisplay !== '') {
-                calculate();
-            }
+            if (operation !== null) calculate();
             operation = op;
             previousDisplay = currentDisplay;
             currentDisplay = '';
@@ -265,7 +263,15 @@
             const prev = parseFloat(previousDisplay);
             const current = parseFloat(currentDisplay);
             
-            if (isNaN(prev) || isNaN(current)) return;
+            if (isNaN(prev) return;
+            if (isNaN(current) {
+                // If current is empty but operation exists, use previous as current
+                currentDisplay = prev.toString();
+                operation = null;
+                previousDisplay = '';
+                updateDisplay();
+                return;
+            }
             
             switch (operation) {
                 case '+':
@@ -323,6 +329,7 @@
             } else if (event.key === '%') {
                 appendOperation('%');
             } else if (event.key === 'Enter' || event.key === '=') {
+                event.preventDefault();
                 calculate();
             } else if (event.key === 'Escape') {
                 clearAll();
@@ -347,6 +354,9 @@
         "priceCurrency": "INR"
       }
     }
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
